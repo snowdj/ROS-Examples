@@ -9,9 +9,12 @@
 #' - [Code and data by chapters](#by_chapters)
 #' - [Code and data folders alphabetically](#alphabetically)
 #' - [Git repo for the code and data](https://github.com/avehtari/ROS-Examples)
+#' - [Download all examples as a ZIP file](https://github.com/avehtari/ROS-Examples/archive/master.zip)
 #'
 #' Below folders (ending /) point to the code folders in github, and
 #' .html -files point to pretty notebooks.
+#'
+#' If you notice an error, submit an issue at https://github.com/avehtari/ROS-Examples/issues.
 #' 
 #' -------------
 #' 
@@ -43,10 +46,14 @@
 #'     - [lastletters.html](Names/lastletters.html) - Last letters - Distributions of last letters of names of American babies
 #'   - [AgePeriodCohort/](https://github.com/avehtari/ROS-Examples/tree/master/AgePeriodCohort/)
 #'     - [births.html](AgePeriodCohort/births.html) - Age adjustment
+#'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
+#'     - [congress_plots.html](Congress/congress_plots.html) - Predictive uncertainty for congressional elections
 #' 
 #' ### 3  Some basic methods in mathematics and probability
 #'   - [Mile/](https://github.com/avehtari/ROS-Examples/tree/master/Mile/)
 #'     - [mile.html](Mile/mile.html) - Trend of record times in the mile run
+#'   - [Metabolic/](https://github.com/avehtari/ROS-Examples/tree/master/Metabolic/)
+#'     - [metabolic.html](Metabolic/metabolic.html) - How to interpret a power law or log-log regression
 #'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
 #'     - [vitals.html](Vitals/vitals.html) - Predict weight
 #'     - [heightweight.html](Vitals/heightweight.html) - Illustrate central limit theorem and normal distribution
@@ -83,7 +90,7 @@
 #'   - [ElectionsEconomy/](https://github.com/avehtari/ROS-Examples/tree/master/ElectionsEconomy/)
 #'     - [hibbs.html](ElectionsEconomy/hibbs.html) - Predicting presidential vote share from the economy
 #'     - [hills.html](ElectionsEconomy/hills.html) - Present uncertainty in parameter estimates
-#'     - [hibbs_coverage.html](https://github.com/avehtari/ROS-Examples/tree/master/ElectionsEconomy/hibbs_coverage.html) - Checking the coverage of intervals
+#'     - [hibbs_coverage.html](ElectionsEconomy/hibbs_coverage.html) - Checking the coverage of intervals
 #'    - [Simplest/](Simplest/)
 #'     - [simplest.html](Simplest/simplest.html) - Linear regression with a single predictor
 #'     - [simplest_lm.html](Simplest/simplest_lm.html) - Linear least squares regression with a single predictor
@@ -112,7 +119,7 @@
 #'     - [vitals.html](Vitals/vitals.html) - Predict weight
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'     - [congress.html](Congress/congress.html) - Predictive uncertainty for congressional elections
-#'   - [NES/](https://github.com/avehtari/ROS-Examples/nes/)
+#'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'     - [nes_linear.html](NES/nes_linear.html) - Fitting the same regression to many datasets
 #'   - [Beauty/](https://github.com/avehtari/ROS-Examples/tree/master/Beauty/)
 #'     - [beauty.html](Beauty/beauty.html) - Student evaluations of instructors’ beauty and teaching quality
@@ -133,6 +140,8 @@
 #'     - [unemployment.html](Unemployment/unemployment.html) - Time series fit and posterior predictive model checking for unemployment series
 #'   - [Rsquared/](https://github.com/avehtari/ROS-Examples/tree/master/Rsquared/)
 #'     - [rsquared.html](Rsquared/rsquared.html) - Bayesian R^2
+#'   - [CrossValidation/](https://github.com/avehtari/ROS-Examples/tree/master/CrossValidation/)
+#'     - [crossvalidation.html](CrossValidation/crossvalidation.html) - Demonstration of cross validation
 #'   - [FakeKCV/](https://github.com/avehtari/ROS-Examples/tree/master/FakeKCV/)
 #'     - [fake_kcv.html](FakeKCV/fake_kcv.html) - Demonstration of $K$-fold cross-validation using simulated data
 #'   - [Pyth/](https://github.com/avehtari/ROS-Examples/tree/master/Pyth/)
@@ -142,12 +151,16 @@
 #'     - [kidiq.html](KidIQ/kidiq.html) - Linear regression with multiple predictors
 #'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
 #'     - [earnings_regression.html](Earnings/earnings_regression.html) - Predict respondents' yearly earnings using survey data from 1990.
+#'   - [Gay/](https://github.com/avehtari/ROS-Examples/tree/master/Gay/)
+#'     - [gay_simple.html](Gay/gay_simple.html) - Simple models (linear and discretized age) and political attitudes as a function of age
 #'   - [Mesquite/](https://github.com/avehtari/ROS-Examples/tree/master/Mesquite/)
 #'     - [mesquite.html](Mesquite/mesquite.html) - Predicting the yields of mesquite bushes
+#'   - [Student/](https://github.com/avehtari/ROS-Examples/tree/master/Student/)
+#'     - [student.html](Student/student.html) - Models for regression coefficients
 #'   - [Pollution/](https://github.com/avehtari/ROS-Examples/tree/master/Pollution/)
 #' 
 #' ### 13  Logistic regression
-#'   - [NES/](https://github.com/avehtari/ROS-Examples/NES/)
+#'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'     - [nes_logistic.html](NES/nes_logistic.html) - Logistic regression, identifiability, and separation
 #'   - [LogisticPriors/](https://github.com/avehtari/ROS-Examples/tree/master/LogisticPriors/)
 #'     - [logistic_priors.html](LogisticPriors/logistic_priors.html) - Effect of priors in logistic regression
@@ -157,7 +170,7 @@
 #' ### 14  Working with logistic regression
 #'   - [LogitGraphs/](https://github.com/avehtari/ROS-Examples/LogitGraphs/)
 #'     - [logitgraphs.html](LogitGraphs/logitgraphs.html) - Different ways of displaying logistic regression
-#'   - [NES/](https://github.com/avehtari/ROS-Examples/NES/)
+#'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'     - [nes_logistic.html](NES/nes_logistic.html) - Logistic regression, identifiability, and separation
 #'   - [Rodents/](https://github.com/avehtari/ROS-Examples/tree/master/Rodents/)
 #'   - [Arsenic/](https://github.com/avehtari/ROS-Examples/tree/master/Arsenic/)
@@ -174,7 +187,7 @@
 #'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
 #'     - [earnings_compound.html](Earnings/earnings_compound.html) - Compound discrete-continuos model
 #'   - [RiskyBehavior/](https://github.com/avehtari/ROS-Examples/tree/master/RiskyBehavior/)
-#'   - [NES/](https://github.com/avehtari/ROS-Examples/NES/)
+#'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'   - [Lalonde/](https://github.com/avehtari/ROS-Examples/tree/master/Lalonde/)
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'   - [AcademyAwards/](https://github.com/avehtari/ROS-Examples/tree/master/AcademyAwards/)
@@ -256,11 +269,15 @@
 #'   - [Coins/](https://github.com/avehtari/ROS-Examples/tree/master/Coins/)
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'     - [congress.html](Congress/congress.html) - Predictive uncertainty for congressional elections
+#'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
+#'     - [congress_plots.html](Congress/congress_plots.html) - Predictive uncertainty for congressional elections
 #'   - [Coop/](https://github.com/avehtari/ROS-Examples/tree/master/Coop/)
 #'     - [riverbay.html](Coop/riverbay.html) - Example of hypothesis testing
 #'   - [Coverage/](https://github.com/avehtari/ROS-Examples/tree/master/Coverage/)
 #'     - [coverage.html](Coverage/coverage.html) - Example of coverage
 #'   - [Cows/](https://github.com/avehtari/ROS-Examples/tree/master/Cows/)
+#'   - [CrossValidation/](https://github.com/avehtari/ROS-Examples/tree/master/CrossValidation/)
+#'     - [crossvalidation.html](CrossValidation/crossvalidation.html) - Demonstration of cross validation
 #'   - [SampleSize/](https://github.com/avehtari/ROS-Examples/tree/master/SampleSize/)
 #'     - [simulation.html](DataCollection/simulation.html) - Sample size simulation
 #'   - [Death/](https://github.com/avehtari/ROS-Examples/tree/master/Death/)
@@ -286,6 +303,7 @@
 #'   - [FrenchElection/](https://github.com/avehtari/ROS-Examples/tree/master/FrenchElection/)
 #'     - [ps_primaire.html](FrenchElection/ps_primaire.html) - French Election data
 #'   - [Gay/](https://github.com/avehtari/ROS-Examples/tree/master/Gay/)
+#'     - [gay_simple.html](Gay/gay_simple.html) - Simple models (linear and discretized age) and political attitudes as a function of age
 #'     - [gay.html](Gay/gay.html) - Nonlinear models (Loess, B-spline, GP-spline, and BART) and political attitudes as a function of age
 #'   - [Girls/](https://github.com/avehtari/ROS-Examples/tree/master/Girls/)
 #'   - [Golf/](https://github.com/avehtari/ROS-Examples/tree/master/Golf/)
@@ -315,12 +333,14 @@
 #'     - [logistic_priors.html](LogisticPriors/logistic_priors.html) - Effect of priors in logistic regression
 #'   - [Mesquite/](https://github.com/avehtari/ROS-Examples/tree/master/Mesquite/)
 #'     - [mesquite.html](Mesquite/mesquite.html) - Predicting the yields of mesquite bushes
+#'   - [Metabolic/](https://github.com/avehtari/ROS-Examples/tree/master/Metabolic/)
+#'     - [metabolic.html](Metabolic/metabolic.html) - How to interpret a power law or log-log regression
 #'   - [Mile/](https://github.com/avehtari/ROS-Examples/tree/master/Mile/)
 #'     - [mile.html](Mile/mile.html) - Trend of record times in the mile run
 #'   - [Names/](https://github.com/avehtari/ROS-Examples/tree/master/Names/)
 #'     - [names.html](Names/names.html) - Names - Distributions of names of American babies
 #'     - [lastletters.html](Names/lastletters.html) - Last letters - Distributions of last letters of names of American babies
-#'   - [NES/](https://github.com/avehtari/ROS-Examples/NES/)
+#'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'     - [nes_linear.html](NES/nes_linear.html) - Fitting the same regression to many datasets
 #'     - [nes_logistic.html](NES/nes_logistic.html) - Logistic regression, identifiability, and separation
 #'   - [Newcomb/](https://github.com/avehtari/ROS-Examples/tree/master/Newcomb/)
@@ -366,6 +386,8 @@
 #'     - [stents.html](Stents/stents.html) - Stents - comparing distributions
 #'   - [Storable/](https://github.com/avehtari/ROS-Examples/tree/master/Storable/)
 #'     - [storable.html](Storable/storable.html) - Ordered categorical data analysis with a study from experimental economics, on the topic of ``storable votes.''
+#'   - [Student/](https://github.com/avehtari/ROS-Examples/tree/master/Student/)
+#'     - [student.html](Student/student.html) - Models for regression coefficients
 #'   - [Unemployment/](https://github.com/avehtari/ROS-Examples/tree/master/Unemployment/)
 #'     - [unemployment.html](Unemployment/unemployment.html) - Time series fit and posterior predictive model checking for unemployment series
 #'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
