@@ -22,12 +22,12 @@ invlogit <- plogis
 
 #' **Load data**
 wells <- read.csv(root("Arsenic/data","wells.csv"))
-wells$y <- wells$switch
+head(wells)
 n <- nrow(wells)
 
 #' **Predict switching with distance, arsenic, and education**
 #+ results='hide'
-fit_7 <- stan_glm(y ~ dist100 + arsenic + educ4,
+fit_7 <- stan_glm(switch ~ dist100 + arsenic + educ4,
                   family = binomial(link="logit"), data = wells)
 #'
 print(fit_7, digits=2)
@@ -64,7 +64,7 @@ round(mean(delta), 2)
 wells$c_dist100 <- wells$dist100 - mean(wells$dist100)
 wells$c_arsenic <- wells$arsenic - mean(wells$arsenic)
 wells$c_educ4 <- wells$educ4 - mean(wells$educ4)
-fit_8 <- stan_glm(y ~ c_dist100 + c_arsenic + c_educ4 +
+fit_8 <- stan_glm(switch ~ c_dist100 + c_arsenic + c_educ4 +
                       c_dist100:c_educ4 + c_arsenic:c_educ4,
                   family = binomial(link="logit"), data = wells)
 #'

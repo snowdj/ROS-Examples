@@ -4,17 +4,37 @@
 #' date: "`r format(Sys.Date())`"
 #' ---
 
-#' Index for the code and data for the book [Regression and Other Stories](http://www.stat.columbia.edu/~gelman/regression/)
+#' Index for the code and data for the book Regression and Other Stories by Andrew Gelman, Jennifer Hill, and Aki Vehtari (2020).
+#'
+#' Back cover text: *Many textbooks on regression focus on theory and
+#' the simplest of examples. Real statistical problems, however, are
+#' complex and subtle. This is not a book about the theory of
+#' regression. It is a book about how to use regression to solve real
+#' problems of comparison, estimation, prediction, and causal
+#' inference. It focuses on practical issues such as sample size and
+#' missing data and a wide range of goals and techniques. It jumps
+#' right in to methods and computer code you can use fresh out of the
+#' box.*
+#'
+#' The book has been sent to the publisher and will be available soon.
+#' 
+#' - [Cambridge University Press page](https://www.cambridge.org/core/books/regression-and-other-stories/DD20DD6C9057118581076E54E40C372C)
 #'
 #' - [Code and data by chapters](#by_chapters)
 #' - [Code and data folders alphabetically](#alphabetically)
 #' - [Git repo for the code and data](https://github.com/avehtari/ROS-Examples)
 #' - [Download all examples as a ZIP file](https://github.com/avehtari/ROS-Examples/archive/master.zip)
+#' - [Sample exams](https://github.com/avehtari/ROS-Examples/tree/master/Exams/)
+#' - See also an article [Teaching Bayes to Graduate Students in Political Science, Sociology, Public Health, Education, Economics, ...](http://www.stat.columbia.edu/~gelman/research/published/teachingbayes.pdf)
 #'
-#' Below folders (ending /) point to the code folders in github, and
-#' .html -files point to pretty notebooks.
+#' The folders below (ending /) point to the code (.R and .Rmd) and
+#' data folders in github, and .html -files point to pretty
+#' notebooks. Most examples have cleaned data in csv file in data
+#' subfolder for easy experimenting. The data subfolders have also the
+#' raw data and *_setup.R file showing how the data cleaning has been
+#' done.
 #'
-#' If you notice an error, submit an issue at https://github.com/avehtari/ROS-Examples/issues.
+#' If you notice an error, submit an issue at https://github.com/avehtari/ROS-Examples/issues or send an email.
 #' 
 #' -------------
 #' 
@@ -30,7 +50,7 @@
 #'   - [Peacekeeping/](https://github.com/avehtari/ROS-Examples/tree/master/Peacekeeping/)
 #'     - [peace.html](Peacekeeping/peace.html) - Outcomes after civil war in countries with and without United Nations peacekeeping
 #'   - [SimpleCausal/](https://github.com/avehtari/ROS-Examples/tree/master/SimpleCausal/)
-#'     - [SimpleCausal.html](SimpleCausal/SimpleCausal.html) - Simple graphs illustrating regression for causal inference
+#'     - [causal.html](SimpleCausal/causal.html) - Simple graphs illustrating regression for causal inference
 #'   - [Helicopters/](https://github.com/avehtari/ROS-Examples/tree/master/Helicopters/)
 #'     - [helicopters.html](Helicopters/helicopters.html) - Example data file for helicopter flying time exercise
 #' 
@@ -54,9 +74,10 @@
 #'     - [mile.html](Mile/mile.html) - Trend of record times in the mile run
 #'   - [Metabolic/](https://github.com/avehtari/ROS-Examples/tree/master/Metabolic/)
 #'     - [metabolic.html](Metabolic/metabolic.html) - How to interpret a power law or log-log regression
-#'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
-#'     - [vitals.html](Vitals/vitals.html) - Predict weight
-#'     - [heightweight.html](Vitals/heightweight.html) - Illustrate central limit theorem and normal distribution
+#'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
+#'     - [height_and_weight.html](Earnings/height_and_weight.html) - Predict weight
+#'   - [CentralLimitTheorem/](https://github.com/avehtari/ROS-Examples/tree/master/CentralLimitTheorem/)
+#'     - [heightweight.html](CentralLimitTheorem/heightweight.html) - Illustrate central limit theorem and normal distribution
 #'   - [Stents/](https://github.com/avehtari/ROS-Examples/tree/master/Stents/)
 #'     - [stents.html](Stents/stents.html) - Stents - comparing distributions
 #' 
@@ -82,9 +103,9 @@
 #'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
 #'     - [earnings_regression.html](Earnings/earnings_regression.html) - Predict respondents' yearly earnings using survey data from 1990.
 #'   - [PearsonLee/](https://github.com/avehtari/ROS-Examples/tree/master/PearsonLee/)
-#'     - [PearsonLee.html](PearsonLee/PearsonLee.html) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee.
+#'     - [heights.html](PearsonLee/heights.html) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee.
 #'   - [FakeMidtermFinal/](https://github.com/avehtari/ROS-Examples/tree/master/FakeMidtermFinal/)
-#'     - [FakeMidtermFinal.html](FakeMidtermFinal/FakeMidtermFinal.html) - Fake dataset of 1000 students' scores on a midterm and final exam
+#'     - [simulation.html](FakeMidtermFinal/simulation.html) - Fake dataset of 1000 students' scores on a midterm and final exam
 #' 
 #' ### 7  Linear regression with a single predictor
 #'   - [ElectionsEconomy/](https://github.com/avehtari/ROS-Examples/tree/master/ElectionsEconomy/)
@@ -107,16 +128,15 @@
 #'     - [bayes.html](ElectionsEconomy/bayes.html) - Demonstration of Bayesian information aggregation
 #'   - [SexRatio/](https://github.com/avehtari/ROS-Examples/tree/master/SexRatio/)
 #'     - [sexratio.html](SexRatio/sexratio.html) - Example where an informative prior makes a difference
-#'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
-#'     - [vitals.html](Vitals/vitals.html) - Predict weight
 #'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
+#'     - [height_and_weight.html](Earnings/height_and_weight.html) - Predict weight
 #'     - [earnings_regression.html](Earnings/earnings_regression.html) - Predict respondents' yearly earnings using survey data from 1990.
 #' 
 #' ### 10  Linear regression with multiple predictors
 #'   - [KidIQ/](https://github.com/avehtari/ROS-Examples/tree/master/KidIQ/)
 #'     - [kidiq.html](KidIQ/kidiq.html) - Linear regression with multiple predictors
-#'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
-#'     - [vitals.html](Vitals/vitals.html) - Predict weight
+#'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
+#'     - [height_and_weight.html](Earnings/height_and_weight.html) - Predict weight
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'     - [congress.html](Congress/congress.html) - Predictive uncertainty for congressional elections
 #'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
@@ -133,7 +153,7 @@
 #'   - [Residuals/](https://github.com/avehtari/ROS-Examples/tree/master/Residuals/)
 #'     - [residuals.html](Residuals/residuals.html) - Plotting the data and fitted model
 #'   - [Introclass/](https://github.com/avehtari/ROS-Examples/tree/master/Introclass/)
-#'     - [fakeresid.html](Introclass/fakeresid.html) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
+#'     - [residual_plots.html](Introclass/residual_plots.html) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 #'   - [Newcomb/](https://github.com/avehtari/ROS-Examples/tree/master/Newcomb/)
 #'     - [newcomb.html](Newcomb/newcomb.html) - Posterior predictive checking of Normal model for Newcomb's speed of light data
 #'   - [Unemployment/](https://github.com/avehtari/ROS-Examples/tree/master/Unemployment/)
@@ -158,6 +178,7 @@
 #'   - [Student/](https://github.com/avehtari/ROS-Examples/tree/master/Student/)
 #'     - [student.html](Student/student.html) - Models for regression coefficients
 #'   - [Pollution/](https://github.com/avehtari/ROS-Examples/tree/master/Pollution/)
+#'     - [pollution.html](Pollution/pollution.html) - Pollution data.
 #' 
 #' ### 13  Logistic regression
 #'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
@@ -187,6 +208,7 @@
 #'   - [Earnings/](https://github.com/avehtari/ROS-Examples/tree/master/Earnings/)
 #'     - [earnings_compound.html](Earnings/earnings_compound.html) - Compound discrete-continuos model
 #'   - [RiskyBehavior/](https://github.com/avehtari/ROS-Examples/tree/master/RiskyBehavior/)
+#'     - [risky.html](RiskyBehavior/risky.html) Risky behavior data.
 #'   - [NES/](https://github.com/avehtari/ROS-Examples/tree/master/NES/)
 #'   - [Lalonde/](https://github.com/avehtari/ROS-Examples/tree/master/Lalonde/)
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
@@ -198,7 +220,7 @@
 #'   - [SampleSize/](https://github.com/avehtari/ROS-Examples/tree/master/SampleSize/)
 #'     - [simulation.html](DataCollection/simulation.html) - Sample size simulation
 #'   - [FakeMidtermFinal/](https://github.com/avehtari/ROS-Examples/tree/master/FakeMidtermFinal/)
-#'     - [SimulationBasedDesign.html](FakeMidtermFinal/SimulationBasedDesign.html) - Fake dataset of a randomized experiment on student grades
+#'     - [simulation_based_design.html](FakeMidtermFinal/simulation_based_design.html) - Fake dataset of a randomized experiment on student grades
 #'
 #' ### 17  Poststratification and missing-data imputation
 #'   - [Poststrat/](https://github.com/avehtari/ROS-Examples/tree/master/Poststrat/)
@@ -215,16 +237,22 @@
 #' ### 19  Causal inference using regression on the treatment variable
 #'   - [ElectricCompany/](https://github.com/avehtari/ROS-Examples/tree/master/ElectricCompany/)
 #'     - [electric.html](ElectricCompany/electric.html) - Analysis of "Electric company" data
+#'   - [Incentives/]((https://github.com/avehtari/ROS-Examples/tree/master/Incentives/))
+#'     - [incentives.html](Incentives/incentives.html) - Simple analysis of incentives data
 #'   - [Cows/](https://github.com/avehtari/ROS-Examples/tree/master/Cows/)
 #' 
 #' ### 20  Observational studies with all confounders assumed to be measured
 #'   - [ElectricCompany/](https://github.com/avehtari/ROS-Examples/tree/master/ElectricCompany/)
 #'     - [electric.html](ElectricCompany/electric.html) - Analysis of "Electric company" data
+#'   - [Childcare/](https://github.com/avehtari/ROS-Examples/tree/master/Childcare/)
+#'     - [childcare.html](Childcare/childcare.html) - Infant Health and Development Program (IHDP) example.
 #' 
 #' ### 21  More advanced topics in causal inference
 #'   - [Sesame/](https://github.com/avehtari/ROS-Examples/tree/master/Sesame/)
 #'     - [sesame.html](Sesame/sesame.html) - Causal analysis of Sesame Street experiment
 #'   - [Bypass/](https://github.com/avehtari/ROS-Examples/tree/master/Pypass/)
+#'   - [ChileSchools/](https://github.com/avehtari/ROS-Examples/tree/master/ChileSchools/)
+#'     - [chile_schools.html](ChileSchools/chile_schoolse.html) - ChileSchools example.
 #' 
 #' ### 22  Advanced regression and multilevel models
 #'   - [Golf/](https://github.com/avehtari/ROS-Examples/tree/master/Golf/)
@@ -236,7 +264,7 @@
 #'   - [Scalability/](https://github.com/avehtari/ROS-Examples/tree/master/Scalability/)
 #'     - [scalability.html](Scalability/scalability.html) - Demonstrate computation speed with 100 000 observations.
 #'
-#' ### Appendix B
+#' ### Appendix A
 #'   - [Coins/](https://github.com/avehtari/ROS-Examples/tree/master/Coins/)
 #'   - [Mile/](https://github.com/avehtari/ROS-Examples/tree/master/Mile/)
 #'     - [mile.html](Mile/mile.html) - Trend of record times in the mile run
@@ -266,10 +294,15 @@
 #'   - [Bypass/](https://github.com/avehtari/ROS-Examples/tree/master/Bypass/)
 #'   - [CausalDiagram/](https://github.com/avehtari/ROS-Examples/tree/master/CausalDiagram/)
 #'     - [diagrams.html](CausalDiagram/diagrams.html) - Plot causal diagram
+#'   - [CentralLimitTheorem/](https://github.com/avehtari/ROS-Examples/tree/master/CentralLimitTheorem/)
+#'     - [heightweight.html](CentralLimitTheorem/heightweight.html) - Illustrate central limit theorem and normal distribution
+#'   - [Childcare/](https://github.com/avehtari/ROS-Examples/tree/master/Childcare/)
+#'     - [childcare.html](Childcare/childcare.html) - Infant Health and Development Program (IHDP) example.
+#'   - [ChileSchools/](https://github.com/avehtari/ROS-Examples/tree/master/ChileSchools/)
+#'     - [chile_schools.html](ChileSchools/chile_schoolse.html) - ChileSchools example.
 #'   - [Coins/](https://github.com/avehtari/ROS-Examples/tree/master/Coins/)
 #'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'     - [congress.html](Congress/congress.html) - Predictive uncertainty for congressional elections
-#'   - [Congress/](https://github.com/avehtari/ROS-Examples/tree/master/Congress/)
 #'     - [congress_plots.html](Congress/congress_plots.html) - Predictive uncertainty for congressional elections
 #'   - [Coop/](https://github.com/avehtari/ROS-Examples/tree/master/Coop/)
 #'     - [riverbay.html](Coop/riverbay.html) - Example of hypothesis testing
@@ -288,6 +321,7 @@
 #'     - [earnings_regression.html](Earnings/earnings_regression.html) - Predict respondents' yearly earnings using survey data from 1990.
 #'     - [earnings_bootstrap.html](Earnings/earnings_bootstrap.html) - Bootstrapping to simulate the sampling distribution
 #'     - [earnings_compound.html](Earnings/earnings_compound.html) - Compound discrete-continuos model
+#'     - [height_and_weight.html](Earnings/height_and_weight.html) - Predict weight
 #'   - [ElectionsEconomy/](https://github.com/avehtari/ROS-Examples/tree/master/ElectionsEconomy/)
 #'     - [bayes.html](ElectionsEconomy/bayes.html) - Demonstration of Bayesian information aggregation
 #'     - [hibbs.html](ElectionsEconomy/hibbs.html) - Predicting presidential vote share from the economy
@@ -298,8 +332,8 @@
 #'   - [FakeKCV/](https://github.com/avehtari/ROS-Examples/tree/master/FakeKCV/)
 #'     - [fake_kcv.html](FakeKCV/fake_kcv.html) - Demonstration of $K$-fold cross-validation using simulated data
 #'   - [FakeMidtermFinal/](https://github.com/avehtari/ROS-Examples/tree/master/FakeMidtermFinal/)
-#'     - [FakeMidtermFinal.html](FakeMidtermFinal/FakeMidtermFinal.html) - Fake dataset of 1000 students' scores on a midterm and final exam
-#'     - [SimulationBasedDesign.html](FakeMidtermFinal/SimulationBasedDesign.html) - Fake dataset of a randomized experiment on student grades
+#'     - [simulation.html](FakeMidtermFinal/simulation.html) - Fake dataset of 1000 students' scores on a midterm and final exam
+#'     - [simulation_based_design.html](FakeMidtermFinal/simulation_based_design.html) - Fake dataset of a randomized experiment on student grades
 #'   - [FrenchElection/](https://github.com/avehtari/ROS-Examples/tree/master/FrenchElection/)
 #'     - [ps_primaire.html](FrenchElection/ps_primaire.html) - French Election data
 #'   - [Gay/](https://github.com/avehtari/ROS-Examples/tree/master/Gay/)
@@ -317,12 +351,14 @@
 #'   - [Imputation/](https://github.com/avehtari/ROS-Examples/tree/master/Imputation/)
 #'     - [imputation.html](Imputation/imputation.html) - Regression-based imputation for the Social Indicators Survey
 #'     - [imputation_gg.html](Imputation/imputation_gg.html) - Regression-based imputation for the Social Indicators Survey, dplyr/ggplot version
+#'   - [Incentives/]((https://github.com/avehtari/ROS-Examples/tree/master/Incentives/))
+#'     - [incentives.html](Incentives/incentives.html) - Simple analysis of incentives data
 #'   - [Influence/](https://github.com/avehtari/ROS-Examples/tree/master/Influence/)
 #'     - [influence.html](Influence/influence.html) - Influence of individual points in a fitted regression
 #'   - [Interactions/](https://github.com/avehtari/ROS-Examples/tree/master/Interactions/)
 #'     - [interactions.html](Interactions/interactions.html) - Plot interaction example figure
 #'   - [Introclass/](https://github.com/avehtari/ROS-Examples/tree/master/Introclass/)
-#'     - [fakeresid.html](Introclass/fakeresid.html) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
+#'     - [residual_plots.html](Introclass/residual_plots.html) - Plot residuals vs.\ predicted values, or residuals vs.\ observed values?
 #'   - [KidIQ/](https://github.com/avehtari/ROS-Examples/tree/master/KidIQ/)
 #'     - [kidiq.html](KidIQ/kidiq.html) - Linear regression with multiple predictors
 #'     - [kidiq_loo.html](KidIQ/kidiq_loo.html) - Linear regression and leave-one-out cross-validation
@@ -350,12 +386,13 @@
 #'   - [Peacekeeping/](https://github.com/avehtari/ROS-Examples/tree/master/Peacekeeping/)
 #'     - [peace.html](Peacekeeping/peace.html) - Outcomes after civil war in countries with and without United Nations peacekeeping
 #'   - [PearsonLee/](https://github.com/avehtari/ROS-Examples/tree/master/PearsonLee/)
-#'     - [PearsonLee.html](PearsonLee/PearsonLee.html) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee.
+#'     - [heights.html](PearsonLee/heights.html) - The heredity of height. Published in 1903 by Karl Pearson and Alice Lee.
 #'   - [Pew/](https://github.com/avehtari/ROS-Examples/tree/master/Pew/)
 #'     - [pew.html](Pew/pew.html) - Miscellaneous analyses using raw Pew data
 #'   - [PoissonExample/](https://github.com/avehtari/ROS-Examples/tree/master/PoissonExample/)
 #'     - [poissonexample.html](PoissonExample/poissonexample.html) - Demonstrate Poisson regression with simulated data.
 #'   - [Pollution/](https://github.com/avehtari/ROS-Examples/tree/master/Pollution/)
+#'     - [pollution.html](Pollution/pollution.html) - Pollution data.
 #'   - [Poststrat/](https://github.com/avehtari/ROS-Examples/tree/master/Poststrat/)
 #'     - [poststrat.html](Poststrat/poststrat.html) - Poststratification after estimation
 #'     - [poststrat2.html](Poststrat/poststrat2.html) - Poststratification after estimation
@@ -368,6 +405,7 @@
 #'   - [Restaurant/](https://github.com/avehtari/ROS-Examples/tree/master/Restaurant/)
 #'     - [restaurant.html](Restaurant/restaurant.html) - Demonstration of using Stan for optimization
 #'   - [RiskyBehavior/](https://github.com/avehtari/ROS-Examples/tree/master/RiskyBehavior/)
+#'     - [risky.html](RiskyBehavior/risky.html) Risky behavior data.
 #'   - [Roaches/](https://github.com/avehtari/ROS-Examples/tree/master/Roaches/)
 #'     - [roaches.html](Roaches/roaches.html) - Analyse the effect of integrated pest management on reducing cockroach levels in urban apartments
 #'   - [Rodents/](https://github.com/avehtari/ROS-Examples/tree/master/Rodents/)
@@ -378,7 +416,7 @@
 #'   - [SexRatio/](https://github.com/avehtari/ROS-Examples/tree/master/SexRatio/)
 #'     - [sexratio.html](SexRatio/sexratio.html) - Example where an informative prior makes a difference
 #'   - [SimpleCausal/](https://github.com/avehtari/ROS-Examples/tree/master/SimpleCausal/)
-#'     - [SimpleCausal.html](SimpleCausal/SimpleCausal.html) - Simple graphs illustrating regression for causal inference
+#'     - [causal.html](SimpleCausal/causal.html) - Simple graphs illustrating regression for causal inference
 #'   - [Simplest/](https://github.com/avehtari/ROS-Examples/tree/master/Simplest/)
 #'     - [simplest.html](Simplest/simplest.html) - Linear regression with a single predictor
 #'     - [simplest_lm.html](Simplest/simplest_lm.html) - Linear least squares regression with a single predictor
@@ -390,6 +428,3 @@
 #'     - [student.html](Student/student.html) - Models for regression coefficients
 #'   - [Unemployment/](https://github.com/avehtari/ROS-Examples/tree/master/Unemployment/)
 #'     - [unemployment.html](Unemployment/unemployment.html) - Time series fit and posterior predictive model checking for unemployment series
-#'   - [Vitals/](https://github.com/avehtari/ROS-Examples/tree/master/Vitals/)
-#'     - [heightweight.html](Vitals/heightweight.html) - Illustrate central limit theorem and normal distribution
-#'     - [vitals.html](Vitals/vitals.html) - Predict weight

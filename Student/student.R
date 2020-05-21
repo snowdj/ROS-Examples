@@ -19,6 +19,7 @@ savefigs <- FALSE
 library("rprojroot")
 root<-has_dirname("ROS-Examples")$make_fix_file()
 library("rstanarm")
+library("rstantools")
 library("loo")
 library("ggplot2")
 library("bayesplot")
@@ -51,22 +52,26 @@ if (savefigs) color_scheme_set(scheme = "gray")
 #' 
 
 #' **Load data**
-# use the merged data with students having both math and Portuguese language grades
-data <- read.table(root("Student/data","student-merged.csv"),sep=";",header=TRUE)
-# select only students with non-zero third year math grade
-data <- data[data$G3mat>0,]
-# We simplify by dropping categorical variables and present all
-# ordinal predictors as numeric values. 
-data[,1:26] <- apply(t(1:26),2,function (x) { as.numeric(data[,x]) })
-# Pick columns to make models for third grade mathematics grade.
-# Use G3por to make a model for third grade Portuguese language grade.
-data_G3mat <- as.data.frame(data[,c("G3mat","school","sex","age","address","famsize","Pstatus","Medu","Fedu","traveltime","studytime","failures","schoolsup","famsup","paid","activities", "nursery", "higher", "internet", "romantic","famrel","freetime","goout","Dalc","Walc","health","absences")])
+# Use the merged data with students having both math and Portuguese language grades
+data <- read.csv(root("Student/data","student-merged.csv"))
+head(data)
+grades <- c("G1mat","G2mat","G3mat","G1por","G2por","G3por")
+predictors <- c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","traveltime","studytime","failures","schoolsup","famsup","paid","activities", "nursery", "higher", "internet", "romantic","famrel","freetime","goout","Dalc","Walc","health","absences")
+p <- length(predictors)
+
+#' **Data for predicting the final math grade**
+#' 
+#' Pick columns to make models for third period mathematics grade G3mat and
+#' select only students with non-zero math grade
+#' (use G3por to make a model for third grade Portuguese language grade).
+data_G3mat <- subset(data, subset=G3mat>0, select=c("G3mat",predictors))
 n <- nrow(data_G3mat)
-p <- ncol(data_G3mat)-1
 
 #' ## Default weak prior on original coefficients
 #' 
-#' **Fit a regression model with default weak priors**
+#' **Fit a regression model with default weak priors**</br>
+#' Dot (.) in the formula means all other columns execpt what is
+#' already on the left of ~.
 fit0 <- stan_glm(G3mat ~ ., data = data_G3mat, seed = SEED, refresh=0)
 
 #' **Plot posterior marginals of coefficients**
@@ -77,7 +82,7 @@ p0 <- p0 + scale_y_discrete(limits = rev(levels(p0$data$parameter)))
 p0
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit0_mcmc_areas.pdf"), p0, height=5, width=5)
+  ggsave(root("Student/figs","student_fit0_mcmc_areas.pdf"), p0, height=5, width=5, colormodel="gray")
 
 #' The above figure shows that after all predictors have been
 #' standardized to have equal standard deviation, the uncertainties on
@@ -88,10 +93,9 @@ if (savefigs)
 
 #' Standardize all predictors for easier comparison of relevances as
 #' discussed in Section 12.1.
-datastd <- data
-datastd[,1:26] <- scale(data[,1:26])
-datastd_G3mat <- as.data.frame(datastd[,c("G3mat","school","sex","age","address","famsize","Pstatus","Medu","Fedu","traveltime","studytime","failures","schoolsup","famsup","paid","activities", "nursery", "higher", "internet", "romantic","famrel","freetime","goout","Dalc","Walc","health","absences")])
-
+datastd_G3mat <- data_G3mat
+datastd_G3mat[,predictors] <-scale(data_G3mat[,predictors])
+                   
 #' ## Default weak prior on coefficients
 #' 
 #' **Fit a regression model with default weak priors**
@@ -105,7 +109,7 @@ p1 <- p1 + scale_y_discrete(limits = rev(levels(p1$data$parameter)))
 p1
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit1_mcmc_areas.pdf"), p1, height=5, width=5)
+  ggsave(root("Student/figs","student_fit1_mcmc_areas.pdf"), p1, height=5, width=5, colormodel="gray")
 
 #' The above figure shows that after all predictors have been
 #' standardized to have equal standard deviation, the uncertainties on
@@ -158,11 +162,14 @@ pp1 <- mcmc_hist(data.frame(Prior=ppR2,Posterior=bayes_R2(fit1)),
                  breaks=seq(0,1,length.out=100),
                  facet_args = list(nrow = 2)) +
   facet_text(size = 13) +
-  xlim(c(0,1)) + xlab("Bayesian R^2")
+  scale_x_continuous(limits = c(0,1), expand = c(0, 0),
+                     labels = c("0","0.25","0.5","0.75","1")) +
+  theme(axis.line.y = element_blank()) +
+  xlab("Bayesian R^2")
 pp1
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit1_R2.pdf"), pp1, height=3, width=3)
+  ggsave(root("Student/figs","student_fit1_R2.pdf"), pp1, height=3, width=3, colormodel="gray")
 
 #' The above figure shows that with the default prior on regression
 #' coefficients and $\sigma$, the implied prior distribution for $R^2$
@@ -177,8 +184,8 @@ if (savefigs)
 #' **Prior predictive checking by looking at the prior on Bayesian $R^2$**
 ppR2<-numeric()
 for (i in 1:4000) {
-  sigma2 <- 0.7*rexp(1, rate=1/sd(data$G3mat))^2
-  muvar <- var(as.matrix(datastd_G3mat[,2:27]) %*% rnorm(26, sd=sd(data$G3mat)/sqrt(26)*sqrt(0.3)))
+  sigma2 <- 0.7*rexp(1, rate=1/sd(datastd_G3mat$G3mat))^2
+  muvar <- var(as.matrix(datastd_G3mat[,2:27]) %*% rnorm(26, sd=sd(datastd_G3mat$G3mat)/sqrt(26)*sqrt(0.3)))
   ppR2[i] <- muvar/(muvar+sigma2)
 }
 ggplot()+geom_histogram(aes(x=ppR2), breaks=seq(0,1,length.out=50)) +
@@ -189,7 +196,7 @@ ggplot()+geom_histogram(aes(x=ppR2), breaks=seq(0,1,length.out=50)) +
 #' **Fit a regression model with a weakly informative prior scaled
 #' with the number of covariates**
 fit2 <- stan_glm(G3mat ~ ., data = datastd_G3mat, seed = SEED,
-                 prior=normal(scale=sd(data$G3mat)/sqrt(26)*sqrt(0.3),
+                 prior=normal(scale=sd(datastd_G3mat$G3mat)/sqrt(26)*sqrt(0.3),
                               autoscale=FALSE),
                  refresh=0)
 
@@ -210,11 +217,14 @@ pp2 <- mcmc_hist(data.frame(Prior=ppR2,Posterior=bayes_R2(fit2)),
                  breaks=seq(0,1,length.out=100),
                  facet_args = list(nrow = 2)) +
   facet_text(size = 13) +
-  xlim(c(0,1)) + xlab("Bayesian R^2")
+  scale_x_continuous(limits = c(0,1), expand = c(0, 0),
+                     labels = c("0","0.25","0.5","0.75","1")) +
+  theme(axis.line.y = element_blank()) +
+  xlab("Bayesian R^2")
 pp2
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit2_R2.pdf"), pp2, height=3, width=3)
+  ggsave(root("Student/figs","student_fit2_R2.pdf"), pp2, height=3, width=3, colormodel="gray")
 
 #' Comparison of the LOO log score reveals that the new model has
 #' better leave-one-out prediction.
@@ -234,7 +244,7 @@ p2 <- p2 + scale_y_discrete(limits = rev(levels(p2$data$parameter)))
 p2
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit2_mcmc_areas.pdf"), p2, height=5, width=5)
+  ggsave(root("Student/figs","student_fit2_mcmc_areas.pdf"), p2, height=5, width=5, colormodel="gray")
 
 #' The above figure shows the posterior distributions of coefficients,
 #' which are slightly more concentrated than for the previous model.
@@ -248,11 +258,11 @@ if (savefigs)
 #' previous model but using $p_0$ for scaling. We can then simulate
 #' from this prior and examine the corresponding prior for $R^2$
 p0 <- 6
-slab_scale <- sd(data$G3mat)/sqrt(p0)*sqrt(0.3)
+slab_scale <- sd(datastd_G3mat$G3mat)/sqrt(p0)*sqrt(0.3)
 #
 ppR2<-numeric()
 for (i in 1:4000) {
-  sigma2 <- 0.7*rexp(1,rate=1/sd(data$G3mat))^2;
+  sigma2 <- 0.7*rexp(1,rate=1/sd(datastd_G3mat$G3mat))^2;
   global_scale <- p0 / (p - p0) * sqrt(sigma2) / sqrt(n)
   z <- rnorm(p)
   lambda <- rcauchy(p)
@@ -278,7 +288,7 @@ ggplot()+geom_histogram(aes(x=ppR2), breaks=seq(0,1,length.out=50)) +
 
 #' **Fit a regression model with regularized horseshoe prior**</br>
 p0 <- 6
-slab_scale <- sd(data$G3mat)/sqrt(p0)*sqrt(0.3)
+slab_scale <- sd(datastd_G3mat$G3mat)/sqrt(p0)*sqrt(0.3)
 # global scale without sigma, as the scaling by sigma happens in stan_glm
 global_scale <- p0 / (p - p0) / sqrt(n)
 fit3 <- stan_glm(G3mat ~ ., data = datastd_G3mat, seed = SEED,
@@ -314,11 +324,14 @@ pp3 <- mcmc_hist(data.frame(Prior=ppR2,Posterior=bayes_R2(fit3)),
                  breaks=seq(0,1,length.out=100),
                  facet_args = list(nrow = 2)) +
   facet_text(size = 13) +
-  xlim(c(0,1)) + xlab("Bayesian R^2")
+  scale_x_continuous(limits = c(0,1), expand = c(0, 0),
+                     labels = c("0","0.25","0.5","0.75","1")) +
+  theme(axis.line.y = element_blank()) +
+  xlab("Bayesian R^2")
 pp3
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit3_R2.pdf"), pp3, height=3, width=3)
+  ggsave(root("Student/figs","student_fit3_R2.pdf"), pp3, height=3, width=3, colormodel="gray")
 
 
 #' **Plot posterior marginals of coefficients**
@@ -329,7 +342,7 @@ p3 <- p3 + scale_y_discrete(limits = rev(levels(p3$data$parameter)))
 p3
 #+ eval=FALSE, include=FALSE
 if (savefigs)
-  ggsave(root("Student/figs","student_fit3_mcmc_areas.pdf"), p3, height=5, width=5)
+  ggsave(root("Student/figs","student_fit3_mcmc_areas.pdf"), p3, height=5, width=5, colormodel="gray")
 
 #' The above figure shows that the regularized horseshoe prior has the
 #' benefit of shrinking the posterior for many regression coefficients
